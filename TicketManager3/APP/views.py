@@ -23,6 +23,17 @@ def home(request):
     })
 
 
+def ticket(request, pk):
+    if request.user.is_authenticated:
+        ticket_record = Ticket.objects.get(id=pk)
+        return render(request, 'ticket.html', {
+            'ticket_record': ticket_record
+        })
+    else:
+        messages.success(request, "You must be logged in to view this page.")
+        return redirect('home')
+
+
 def admin(request):
     return redirect('admin')
 
