@@ -3,17 +3,43 @@
 {%  block body  %}
 <div class="col-md-6 offset-md-3">
 
-  {% if user.is_authenticated %}
+{% if user.is_authenticated %}
 
-  <h1>Hello User!</h1>
+  <h1>Tickets</h1>
 
+  {%  if tickets  %}
+    <table class="table table-hover table-bordered table-sm">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Entry 1</th>
+          <th scope="col">Entry 2</th>
+          <th scope="col">Entry 3</th>
+          <th scope="col">Entry 4</th>
+          <th scope="col">Entry 5</th>
 
-  {% else %}
+        </tr>
+      </thead>
 
+      {%  for ticket in tickets  %}
+        <tbody>
+          <tr>
+            <th scope="row">{{ ticket.id }}</th>
+            <td>{{ ticket.entry_1 }}</td>
+            <td>{{ ticket.entry_2 }}</td>
+            <td>{{ ticket.entry_3 }}</td>
+            <td>{{ ticket.entry_4 }}</td>
+            <td>{{ ticket.entry_5 }}</td>
 
-  <h1>
-    Login
-  </h1>
+          </tr>
+        </tbody>
+      {%  endfor  %}
+    </table>
+{%  endif  %}
+
+{% else %}
+
+  <h1>Login</h1>
   <br>
   <form method="POST" action="{% url 'home' %}">
     {% csrf_token %}
