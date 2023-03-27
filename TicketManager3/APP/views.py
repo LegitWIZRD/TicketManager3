@@ -21,6 +21,10 @@ def home(request):
     })
 
 
+def admin(request):
+    return redirect('admin')
+
+
 def logout_user(request):
     logout(request)
     messages.success(request, "You have been logged out!")
