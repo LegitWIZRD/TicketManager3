@@ -2,13 +2,35 @@
 
 {%  block body  %}
 
-<h1>Ticket</h1>
+<h1>Ticket ID {{ ticket_record.id }}: Inquire</h1>
 
-{{ ticket_record.created_at }}<br>
-{{ ticket_record.entry_1 }}<br>
-{{ ticket_record.entry_2 }}<br>
-{{ ticket_record.entry_3 }}<br>
-{{ ticket_record.entry_4 }}<br>
-{{ ticket_record.entry_5 }}<br>
 
+<form class="form-floating">
+    <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue1" value="{{ ticket_record.created_at }}" readonly>
+    <label for="floatingInputValue1">Creation Timestamp</label>
+</form><br>
+<form class="form-floating">
+    <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue2" value="{{ ticket_record.ticket_number }}" readonly>
+    <label for="floatingInputValue2">Ticket Number</label>
+</form><br>
+<form class="form-floating">
+    <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue3" value="{{ ticket_record.contact_name }}" readonly>
+    <label for="floatingInputValue3">Contact Name</label>
+</form><br>
+<form class="form-floating">
+    <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue4" value="{{ ticket_record.contact_email }}" readonly>
+    <label for="floatingInputValue4">Contact Email</label>
+</form><br>
+<form class="form-floating">
+    <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue5" value="{{ ticket_record.description }}" readonly>
+    <label for="floatingInputValue5">Description</label>
+</form><br>
+<form class="form-floating">
+    <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue6" value="{{ ticket_record.notes }}" readonly>
+    <label for="floatingInputValue6">Notes</label>
+</form>
+<form class="form-floating">
+    <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue7" value="McPherson [{{ ticket_record.ticket_number }}]: {{ ticket_record.contact_name }}: {{ ticket_record.description }}" readonly>
+    <label for="floatingInputValue7">Email Subject</label>
+</form>
 {%  endblock  %}

@@ -12,12 +12,11 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Entry 1</th>
-          <th scope="col">Entry 2</th>
-          <th scope="col">Entry 3</th>
-          <th scope="col">Entry 4</th>
-          <th scope="col">Entry 5</th>
-
+          <th scope="col">Ticket Number</th>
+          <th scope="col">Contact Name</th>
+          <th scope="col">Contact Email</th>
+          <th scope="col">Description</th>
+          <th scope="col">Email Subject</th>
         </tr>
       </thead>
 
@@ -25,11 +24,11 @@
         <tbody>
           <tr>
             <th scope="row"><a href="{% url 'ticket' ticket.id %}">{{ ticket.id }}</a></th>
-            <td>{{ ticket.entry_1 }}</td>
-            <td>{{ ticket.entry_2 }}</td>
-            <td>{{ ticket.entry_3 }}</td>
-            <td>{{ ticket.entry_4 }}</td>
-            <td>{{ ticket.entry_5 }}</td>
+            <td>{{ ticket.ticket_number }}</td>
+            <td>{{ ticket.contact_name }}</td>
+            <td>{{ ticket.contact_email }}</td>
+            <td>{{ ticket.description }}</td>
+            <td>McPherson [{{ ticket.ticket_number }}]: {{ ticket.contact_name }}: {{ ticket.description }}</td>
 
           </tr>
         </tbody>
