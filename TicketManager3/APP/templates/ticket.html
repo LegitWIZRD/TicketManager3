@@ -33,4 +33,7 @@
     <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue7" value="McPherson [{{ ticket_record.ticket_number }}]: {{ ticket_record.contact_name }}: {{ ticket_record.description }}" readonly>
     <label for="floatingInputValue7">Email Subject</label>
 </form>
+<br><br>
+<button type="button" class="btn btn-outline-secondary" ><a href="{% url 'home' %}">Back</a></button>
+<button type="button" class="btn btn-outline-secondary" ><a href="{% url 'edit' ticket_record.id %}">Edit</a></button>
 {%  endblock  %}
