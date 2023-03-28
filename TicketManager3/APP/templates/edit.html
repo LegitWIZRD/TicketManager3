@@ -4,7 +4,7 @@
 
 <h1>Ticket ID {{ ticket_record.id }}: Edit</h1>
 
-
+{% csrf_token %}
 <form class="form-floating">
   <input type="text" class="form-control-plaintext form-control-lg" id="floatingInputValue1" value="{{ ticket_record.created_at }}" readonly>
   <label for="floatingInputValue1">Creation Timestamp</label>
@@ -35,5 +35,6 @@
 </form>
 <br><br>
 <button type="button" class="btn btn-outline-secondary" ><a href="{% url 'ticket' ticket_record.id %}">Cancel</a></button>
-<button type="button" class="btn btn-outline-secondary" ><a href="{% url 'home' %}">Submit</a></button>
+<button type="button" class="btn btn-outline-danger" ><a href="{% url 'delete' ticket_record.id %}">Delete</a></button>
+<button type="button" class="btn btn-outline-success" ><a href="{% url 'home' %}">Submit</a></button>
 {%  endblock  %}

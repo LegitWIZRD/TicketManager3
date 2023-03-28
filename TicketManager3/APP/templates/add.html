@@ -1,0 +1,14 @@
+{%  extends "layout.html"  %}
+
+{%  block body  %}
+
+<h1>Create New Ticket</h1>
+<br>
+<form method="POST" action="{% url 'home' %}">
+{% csrf_token %}
+{{ form.as_p }}
+</form>
+<br>
+<button type="button" class="btn btn-outline-secondary" ><a href="{% url 'home' %}">Cancel</a></button>
+<button type="button" class="btn btn-outline-success" >Submit</button>
+{%  endblock  %}

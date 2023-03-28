@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, logout, login
 from django.contrib import messages
 from .models import Ticket
+from .forms import NewTicketForm
 # Create your views here.
 
 
@@ -23,6 +24,22 @@ def home(request):
     })
 
 
+def add_ticket(request):
+    form = NewTicketForm(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            if form.is_valid():
+                new = form.save()
+                messages.success(request, "New Ticket Was Added!")
+                return redirect('home')
+
+        return render(request, 'add.html', {
+            'form': form})
+    else:
+        messages.success(request, "You must be logged in to view this page.")
+        return redirect('home')
+
+
 def ticket(request, pk):
     if request.user.is_authenticated:
         ticket_record = Ticket.objects.get(id=pk)
@@ -40,6 +57,17 @@ def edit_ticket(request, pk):
         return render(request, 'edit.html', {
             'ticket_record': ticket_record
         })
+    else:
+        messages.success(request, "You must be logged in to view this page.")
+        return redirect('home')
+
+
+def delete_ticket(request, pk):
+    if request.user.is_authenticated:
+        deleted_ticket = Ticket.objects.get(id=pk)
+        deleted_ticket.delete()
+        messages.success(request, f"Ticket was deleted successfully!")
+        return redirect('home')
     else:
         messages.success(request, "You must be logged in to view this page.")
         return redirect('home')

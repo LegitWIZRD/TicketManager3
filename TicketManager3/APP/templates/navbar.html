@@ -9,6 +9,10 @@
         {% if user.is_authenticated %}
 
         <li class="nav-item">
+          <a class="nav-link" href="{% url 'add' %}">New Ticket</a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="{% url 'admin' %}">Admin</a>
         </li>
 
